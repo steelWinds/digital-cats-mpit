@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --c-green: #4C6F6C;
+    --c-light-green: #6C928F;
+    --c-white: #ffffff;
+
+    --el-border-radius-base: 10px !important;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans;
+
+    .el-button {
+      --el-button-text-color: var(--c-green);
+      --el-button-hover-bg-color: var(--c-green);
+      --el-button-hover-text-color: var(--c-white);
+      --el-button-border-color: var(--c-green);
+      --el-button-hover-border-color: var(--c-green);
+      --el-button-active-border-color: var(--c-light-green);
+    }
+  }
+}
