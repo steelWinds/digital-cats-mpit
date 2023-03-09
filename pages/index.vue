@@ -2,6 +2,8 @@
 const parallaxContainer = ref(null)
 
 const { tilt, roll } = useParallax(parallaxContainer)
+const { isSupported: isSupportedNDEF } = useNDEF()
+const router = useRouter()
 
 const parallaxStyle = computed(() => ({
   transform: `rotateX(${roll.value * 30}deg) rotateY(${tilt.value * 60}deg)`
@@ -29,9 +31,43 @@ const layer = computed(() => ({
         Вся культура в NFC
       </h3>
 
-      <el-button class="!px-8 !py-3 sm:!px-10 sm:!py-4 rounded-sm !text-lg sm:!text-2xl !h-auto mb-11">
-        Попробовать
-      </el-button>
+      <ClientOnly>
+        <el-popover
+          placement="top-start"
+          title="Ой!"
+          :width="210"
+          trigger="hover"
+          content="Ваш девайс или браузер не поддерживает чтение NFC!"
+          :show-arrow="false"
+        >
+          <template #reference>
+            <NuxtLink
+              class="
+                !px-8
+                !py-3
+                sm:!px-10 sm:!py-4
+                rounded-sm
+                text-green
+                !text-lg sm:!text-2xl
+                !h-auto
+                mb-11
+                border-[1px]
+                border-solid
+                border-green
+                !rounded-[10px]
+                hover:bg-green
+                hover:text-white
+                active:border-light-green
+                transition
+                duration-300
+              "
+              :class="{ 'disabled': !isSupportedNDEF }"
+            >
+              Попробовать
+            </NuxtLink>
+          </template>
+        </el-popover>
+      </ClientOnly>
     </div>
 
     <div class="self-center sm:self-end">

@@ -8,8 +8,17 @@
     --c-green: #4C6F6C;
     --c-light-green: #6C928F;
     --c-white: #ffffff;
+    --c-gray: #a8abb2;
 
     --el-border-radius-base: 10px !important;
+  }
+
+  .disabled {
+    &, &:active, &:hover {
+      color: var(--c-gray) !important;
+      border-color: var(--c-gray) !important;
+      background: unset !important;
+    }
   }
 
   html {
