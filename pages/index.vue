@@ -4,12 +4,19 @@ const parallaxContainer = ref(null)
 const { tilt, roll } = useParallax(parallaxContainer)
 
 const parallaxStyle = computed(() => ({
-  transform: `rotateX(${roll.value * 30}deg) rotateY(${tilt.value * 40}deg)`
+  transform: `rotateX(${roll.value * 30}deg) rotateY(${tilt.value * 60}deg)`
+}))
+
+const layer = computed(() => ({
+  filter: `drop-shadow(${tilt.value * 30}px ${roll.value * 30}px 2px rgb(108 146 143 / 0.3))`
 }))
 </script>
 
 <template>
-  <article class="max-w-base mx-auto pt-28 pb-20 flex flex-col">
+  <article
+    ref="parallaxContainer"
+    class="max-w-base mx-auto pt-28 pb-20 flex flex-col"
+  >
     <div
       ref="parallaxContainer"
       class="flex flex-col items-center sm:items-start"
@@ -25,11 +32,14 @@ const parallaxStyle = computed(() => ({
       <el-button class="!px-8 !py-3 sm:!px-10 sm:!py-4 rounded-sm !text-lg sm:!text-2xl !h-auto mb-11">
         Попробовать
       </el-button>
+    </div>
 
+    <div class="self-center sm:self-end">
       <div :style="parallaxStyle">
         <nuxt-icon
           name="nfc"
-          class="self-center sm:self-end text-7xl sm:text-[123px] text-light-green"
+          :style="layer"
+          class="text-7xl sm:text-[123px] text-light-green"
         />
       </div>
     </div>
