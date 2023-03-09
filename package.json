@@ -11,6 +11,8 @@
     "@css-render/vue3-ssr": "^0.15.12",
     "@element-plus/nuxt": "^1.0.3",
     "@nuxt/eslint-config": "^0.1.1",
+    "@types/animejs": "^3.1.7",
+    "@types/vivus": "^0.4.4",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@vicons/carbon": "^0.12.0",
     "@vueuse/nuxt": "^9.13.0",
@@ -32,13 +34,16 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "@lottiefiles/lottie-player": "^1.7.1",
     "@nuxt/image": "^0.7.1",
     "@pinia/nuxt": "^0.4.7",
     "@vueuse/core": "^9.13.0",
+    "animejs": "^3.2.1",
     "element-plus": "^2.2.36",
     "nuxt-icons": "^3.1.0",
     "pinia": "^2.0.33",
     "postcss-import": "^15.1.0",
-    "postcss-preset-env": "^8.0.1"
+    "postcss-preset-env": "^8.0.1",
+    "vivus": "^0.4.6"
   }
 }

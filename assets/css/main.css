@@ -39,4 +39,8 @@
       --el-button-active-border-color: var(--c-light-green);
     }
   }
+
+  svg {
+    margin-block-end: 0 !important;
+  }
 }
