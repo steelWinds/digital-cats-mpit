@@ -13,11 +13,17 @@
     --el-border-radius-base: 10px !important;
   }
 
+  a {
+    cursor: pointer;
+  }
+
   .disabled {
     &, &:active, &:hover {
       color: var(--c-gray) !important;
       border-color: var(--c-gray) !important;
       background: unset !important;
+      cursor: default !important;
+      user-select: none !important;
     }
   }
 

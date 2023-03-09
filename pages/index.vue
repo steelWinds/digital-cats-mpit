@@ -17,7 +17,7 @@ const layer = computed(() => ({
 <template>
   <article
     ref="parallaxContainer"
-    class="max-w-base mx-auto pt-28 pb-20 flex flex-col"
+    class="max-w-base mx-auto pt-48 pb-20 flex flex-col"
   >
     <div
       ref="parallaxContainer"
@@ -42,6 +42,7 @@ const layer = computed(() => ({
         >
           <template #reference>
             <NuxtLink
+              :to="!isSupportedNDEF ? null : '/nfc-reader'"
               class="
                 !px-8
                 !py-3

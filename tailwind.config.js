@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        human: "url('public/images/bg-main.png')"
+      },
       colors: {
         green: '#4C6F6C',
         'light-green': '#6C928F',
