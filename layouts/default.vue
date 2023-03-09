@@ -1,7 +1,7 @@
 <template>
   <el-container
     class="
-      !bg-[url(images/bg-main.png)]
+      !bg-[url(~/assets/images/bg-main.png)]
       bg-no-repeat
       bg-origin-border
       main-bg

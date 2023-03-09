@@ -11,7 +11,7 @@
     <el-row>
       <VNuxtLink to="/">
         <img
-          src="/images/logo.png"
+          src="~/assets/images/logo.png"
           class="w-24 "
         >
       </VNuxtLink>
