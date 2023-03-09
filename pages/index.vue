@@ -3,7 +3,6 @@ const parallaxContainer = ref(null)
 
 const { tilt, roll } = useParallax(parallaxContainer)
 const { isSupported: isSupportedNDEF } = useNDEF()
-const router = useRouter()
 
 const parallaxStyle = computed(() => ({
   transform: `rotateX(${roll.value * 30}deg) rotateY(${tilt.value * 60}deg)`
@@ -42,7 +41,7 @@ const layer = computed(() => ({
         >
           <template #reference>
             <NuxtLink
-              :to="!isSupportedNDEF ? null : '/nfc-reader'"
+              :to="!isSupportedNDEF ? '' : '/nfc-reader'"
               class="
                 !px-8
                 !py-3
