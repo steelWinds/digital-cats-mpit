@@ -7,11 +7,13 @@ definePageMeta({
 
 const scanNDEF = async () => {
   try {
+    ElMessage({ message: 'Идет чтение NFC чипа, приложите к нему телефон', type: 'error' })
+
     const readerEvent = await scan()
 
     console.log(readerEvent)
   } catch (error: any) {
-    ElMessage({ message: error.message, type: 'error' })
+    ElMessage({ message: error.message || 'Возникла неизвестная ошибка, попробуйте другой чип', type: 'error' })
   }
 }
 </script>
