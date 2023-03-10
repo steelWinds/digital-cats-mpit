@@ -11,7 +11,7 @@ export const useNDEF = () => {
   const scan = async () => {
     return new Promise((resolve, reject) => {
       try {
-        if (!isSupported.value) return reject(new Error('NDEF is not supported'))
+        if (!isSupported.value) return reject(new Error('NDEF чтение недоступно, или вы отказали в доступе'))
 
         togglePending(true)
 
