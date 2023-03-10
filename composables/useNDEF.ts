@@ -10,30 +10,30 @@ export const useNDEF = () => {
 
   const scan = async () => {
     return new Promise((resolve, reject) => {
-      togglePending(true)
-
       try {
         if (isSupported.value) reject(new Error('NDEF is not supported'))
+
+        togglePending(true)
 
         const ndefReader = new window.NDEFReader()
 
         ndefReader.scan({ signal })
 
         ndefReader.onreading = (event) => {
-          resolve(event)
-
           togglePending(false)
+
+          resolve(event)
         }
 
         ndefReader.onreadingerror = (error) => {
-          reject(error)
-
           togglePending(false)
+
+          reject(error)
         }
       } catch (error: any) {
-        reject(error)
-
         togglePending(false)
+
+        reject(error)
       }
     })
   }
