@@ -13,27 +13,29 @@ export const useNDEF = () => {
       try {
         if (!isSupported.value) return reject(new Error('NDEF чтение недоступно, или вы отказали в доступе'))
 
-        togglePending(true)
-
         const ndefReader = new window.NDEFReader()
 
-        ndefReader.scan({ signal: controller.signal })
+        togglePending(true)
 
-        ndefReader.onreading = (event) => {
-          togglePending(false)
+        ndefReader
+          .scan({ signal: controller.signal })
+          .then(() => {
+            ndefReader.onreading = (event) => {
+              togglePending(false)
 
-          resolve(event)
-        }
+              resolve(event)
+            }
 
-        ndefReader.onreadingerror = (error) => {
-          togglePending(false)
+            ndefReader.onreadingerror = (error) => {
+              togglePending(false)
 
-          return reject(error)
-        }
+              reject(error)
+            }
+          })
       } catch (error: any) {
         togglePending(false)
 
-        return reject(error)
+        reject(error)
       }
     })
   }
