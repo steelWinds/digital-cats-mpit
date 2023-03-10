@@ -59,14 +59,10 @@ watch(pending, (val) => {
           !text-lg
           !h-auto
         "
-        @click="scanNDEF"
+        @click="() => { !pending ? scanNDEF() : controller.abort() }"
       >
         <span v-if="!pending">Запустить</span>
         <span v-else>Прервать</span>
-      </el-button>
-
-      <el-button @click="controller.abort()">
-        <span>Прервать</span>
       </el-button>
     </article>
   </NuxtLayout>
