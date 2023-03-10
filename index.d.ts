@@ -17,8 +17,16 @@ interface NDEFReadingEvent extends Event {
   message: NDEFMessage;
 }
 
+type NDEFWriteMessage = ArrayBuffer | DataView | Partial<NDEFRecord>[];
+
+interface NDEFWriteMessageParams {
+  overwrite: boolean;
+  signal: AbortSignal;
+}
+
 interface NDEFReader {
-  new (): NDEFReader
+  new(): NDEFReader
+  write: (message: NDEFWriteMessage, params?: NDEFWriteMessageParams) => Promise<void>
   scan: (params?: {signal: AbortSignal}) => Promise<NDEFReadingEvent>;
   onreadingerror: (error: any) => void;
   onreading: (event: NDEFReadingEvent) => void;

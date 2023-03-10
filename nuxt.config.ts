@@ -1,9 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
+    head: {
+      charset: 'utf-16',
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+      title: 'SakhaCultureTech',
+      meta: [
+        { name: 'description', content: 'Culture in the NFC' },
+        { name: 'application-name', content: 'Sakha-Culture-Tech' }
+      ]
+    },
     layoutTransition: {
-      name: 'slide',
-      mode: 'out-in' // default
+      name: 'fade',
+      mode: 'out-in'
+    },
+    pageTransition: {
+      name: 'fade',
+      mode: 'out-in'
     }
   },
   imports: {

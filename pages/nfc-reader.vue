@@ -9,11 +9,15 @@ const scanNDEF = async () => {
   try {
     const readerEvent = await scan()
 
-    if (readerEvent.type === 'url') {
-      readerEvent.type
+    const records = readerEvent.message.records
+
+    if (!records?.length || !records.map(r => r.mediaType).includes('url')) {
+      return ElMessage({ message: 'Чип не содержит данных', type: 'warning' })
     }
+
+    console.log(readerEvent.message)
   } catch (error: any) {
-    ElMessage({ message: error.message || 'Unhandled error, try different NFC module', type: 'error' })
+    ElMessage({ message: error.message || 'Необычный тип ошибки ', type: 'error' })
   }
 }
 
@@ -26,25 +30,6 @@ watch(pending, (val) => {
 
 <template>
   <NuxtLayout name="app-page">
-    <template #header>
-      <el-row
-        justify="start"
-        align="middle"
-        class="h-full p-0 m-0"
-      >
-        <NuxtLink
-          to="/"
-          class="ml-[50px]"
-        >
-          <Icon
-            name="material-symbols:arrow-back-ios-rounded"
-            class="text-dark-gray"
-            size="32"
-          />
-        </NuxtLink>
-      </el-row>
-    </template>
-
     <article class="h-full flex justify-center items-center flex-col">
       <Icon
         name="fa6-brands:nfc-directional"
@@ -70,6 +55,31 @@ watch(pending, (val) => {
           Запустить
         </template>
       </el-button>
+
+      <NuxtLink
+        to="/"
+        class="
+          !px-8
+          !py-3
+          mt-12
+          !rounded-base
+          text-green
+          !text-lg
+          !h-auto
+          font-semibold
+          border-[1px]
+          border-solid
+          border-green
+          !rounded-[10px]
+          hover:bg-green
+          hover:text-white
+          active:border-light-green
+          transition
+          duration-300
+        "
+      >
+        Прервать и вернуться
+      </NuxtLink>
     </article>
   </NuxtLayout>
 </template>

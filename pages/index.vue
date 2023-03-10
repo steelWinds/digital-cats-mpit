@@ -5,11 +5,11 @@ const { tilt, roll } = useParallax(parallaxContainer)
 const { isSupported: isSupportedNDEF } = useNDEF()
 
 const parallaxStyle = computed(() => ({
-  transform: `rotateX(${roll.value * 30}deg) rotateY(${tilt.value * 35}deg)`
+  transform: `rotateX(${roll.value * 20}deg) rotateY(${tilt.value * 20}deg)`
 }))
 
 const parallaxShadow = computed(() => ({
-  filter: `drop-shadow(${roll.value * 30}px ${tilt.value * -20}px 3px rgb(108 146 143 / 0.4))`
+  filter: `drop-shadow(${roll.value * 15}px ${tilt.value * 15}px 3px rgb(108 146 143 / 0.4))`
 }))
 </script>
 

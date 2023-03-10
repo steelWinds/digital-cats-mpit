@@ -13,6 +13,10 @@
     --el-border-radius-base: 10px !important;
   }
 
+  body {
+    touch-action: pan-x pan-y;
+  }
+
   a {
     cursor: pointer;
   }

@@ -1,9 +1,5 @@
 <template>
   <el-container class="h-screen">
-    <el-header class="!p-0 !m-0 sticky top-0">
-      <slot name="header" />
-    </el-header>
-
     <el-main>
       <slot />
     </el-main>

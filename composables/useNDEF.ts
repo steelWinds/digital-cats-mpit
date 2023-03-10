@@ -4,6 +4,17 @@ export const useNDEF = () => {
   const controller = new AbortController()
   const signal = controller.signal
 
+  const write = async (message: NDEFWriteMessage, options?: NDEFWriteMessageParams): Promise<boolean> => {
+    const ndefReader = new window.NDEFReader()
+
+    return new Promise((resolve, reject) => {
+      ndefReader
+        .write(message, options)
+        .then(() => resolve(true))
+        .then(reject)
+    })
+  }
+
   const scan = async (): Promise<NDEFReadingEvent> => {
     if (!isSupported.value) throw (new Error('NDEF not available'))
 
@@ -38,6 +49,7 @@ export const useNDEF = () => {
   return {
     isSupported,
     scan,
+    write,
     pending,
     controller
   }

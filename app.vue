@@ -7,13 +7,13 @@
 </template>
 
 <style>
-  .slide-enter-active,
-  .slide-leave-active {
+  .fade-enter-active,
+  .fade-leave-active {
     transition: all 0.3s;
   }
 
-  .slide-enter-from,
-  .slide-leave-to {
-    transform: translateY(-100%);
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>
