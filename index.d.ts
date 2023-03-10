@@ -19,7 +19,7 @@ interface NDEFReadingEvent extends Event {
 
 interface NDEFReader {
   new (): NDEFReader
-  scan: () => Promise<NDEFReadingEvent>;
+  scan: (params?: {signal: AbortSignal}) => Promise<NDEFReadingEvent>;
   onreadingerror: (error: any) => void;
   onreading: (event: NDEFReadingEvent) => void;
 }

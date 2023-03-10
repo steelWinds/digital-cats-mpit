@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devServer: {
+    port: 2000
+  },
   imports: {
     dirs: [
       'composables/**',
@@ -25,7 +28,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
     '@element-plus/nuxt',
-    'nuxt-icons'
+    'nuxt-icons',
+    'nuxt-icon'
   ],
   pinia: {
     autoImports: [

@@ -5,32 +5,43 @@ interface ScanParams {
 
 export const useNDEF = () => {
   const isSupported = useSupported(() => globalThis && 'NDEFReader' in globalThis)
-  const readerEvent = ref<NDEFReadingEvent | null>(null)
+  const [pending, togglePending] = useToggle(false)
+  const { abort, signal } = new AbortController()
 
-  const scan = async (params: ScanParams) => {
-    const { readingError, signalError } = params
+  const scan = async () => {
+    return new Promise((resolve, reject) => {
+      try {
+        if (isSupported.value) reject(new Error('NDEF is not supported'))
 
-    try {
-      if (isSupported.value) throw new Error('NDEF is not supported')
+        togglePending(true)
 
-      const ndefReader = new window.NDEFReader()
+        const ndefReader = new window.NDEFReader()
 
-      await ndefReader.scan()
+        ndefReader.scan({ signal })
 
-      ndefReader.onreading = (event) => {
-        readerEvent.value = event
+        ndefReader.onreading = (event) => {
+          resolve(event)
+
+          togglePending(false)
+        }
+
+        ndefReader.onreadingerror = (error) => {
+          reject(error)
+
+          togglePending(false)
+        }
+      } catch (error: any) {
+        reject(error)
+
+        togglePending(false)
       }
-
-      ndefReader.onreadingerror = (error) => {
-        readingError.call(this, error)
-      }
-    } catch (e: any) {
-      signalError.call(this, e)
-    }
+    })
   }
 
   return {
     isSupported,
-    scan
+    scan,
+    pending,
+    abort
   }
 }

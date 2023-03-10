@@ -5,11 +5,11 @@ const { tilt, roll } = useParallax(parallaxContainer)
 const { isSupported: isSupportedNDEF } = useNDEF()
 
 const parallaxStyle = computed(() => ({
-  transform: `rotateX(${roll.value * 30}deg) rotateY(${tilt.value * 60}deg)`
+  transform: `rotateX(${roll.value * 30}deg) rotateY(${tilt.value * 35}deg)`
 }))
 
-const layer = computed(() => ({
-  filter: `drop-shadow(${tilt.value * 30}px ${roll.value * 30}px 2px rgb(108 146 143 / 0.3))`
+const parallaxShadow = computed(() => ({
+  filter: `drop-shadow(${roll.value * 30}px ${tilt.value * -20}px 3px rgb(108 146 143 / 0.4))`
 }))
 </script>
 
@@ -72,10 +72,11 @@ const layer = computed(() => ({
 
     <div class="self-center sm:self-end">
       <div :style="parallaxStyle">
-        <nuxt-icon
-          name="nfc"
-          :style="layer"
-          class="text-7xl sm:text-[123px] text-light-green"
+        <Icon
+          :style="parallaxShadow"
+          name="fa6-brands:nfc-directional"
+          class="text-green"
+          size="124"
         />
       </div>
     </div>
