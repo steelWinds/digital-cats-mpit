@@ -20,15 +20,20 @@ const scanNDEF = async () => {
   <NuxtLayout name="app-page">
     <template #header>
       <el-row
-        justify="center"
+        justify="start"
         align="middle"
-        class="h-full bg-green p-0 m-0"
+        class="h-full p-0 m-0"
       >
-        <Icon
-          name="material-symbols:arrow-back-ios-rounded"
-          class="text-dark-gray"
-          size="24"
-        />
+        <NuxtLink
+          to="/"
+          class="ml-[50px]"
+        >
+          <Icon
+            name="material-symbols:arrow-back-ios-rounded"
+            class="text-dark-gray"
+            size="32"
+          />
+        </NuxtLink>
       </el-row>
     </template>
 
