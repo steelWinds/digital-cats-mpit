@@ -65,7 +65,7 @@ watch(pending, (val) => {
         <span v-else>Прервать</span>
       </el-button>
 
-      <el-button @click="controller.abort">
+      <el-button @click="controller.abort()">
         <span>Прервать</span>
       </el-button>
     </article>
