@@ -18,6 +18,20 @@ const scanNDEF = async () => {
 
 <template>
   <NuxtLayout name="app-page">
+    <template #header>
+      <el-row
+        justify="center"
+        align="middle"
+        class="h-full bg-green p-0 m-0"
+      >
+        <Icon
+          name="material-symbols:arrow-back-ios-rounded"
+          class="text-dark-gray"
+          size="24"
+        />
+      </el-row>
+    </template>
+
     <article class="h-full flex justify-center items-center flex-col">
       <Icon
         name="fa6-brands:nfc-directional"
@@ -42,17 +56,5 @@ const scanNDEF = async () => {
         <span v-else>Прервать</span>
       </el-button>
     </article>
-
-    <template #footer>
-      <el-row
-        justify="center"
-        align="middle"
-        class="h-full bg-green p-0 m-0"
-      >
-        <el-icon :size="32">
-          <ElIconHouse class="text-white" />
-        </el-icon>
-      </el-row>
-    </template>
   </NuxtLayout>
 </template>
