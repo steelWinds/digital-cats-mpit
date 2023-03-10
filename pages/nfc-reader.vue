@@ -55,7 +55,7 @@ const scanNDEF = async () => {
           !text-lg
           !h-auto
         "
-        @click="!pending ? scanNDEF : abort"
+        @click="() => !pending ? scanNDEF() : abort()"
       >
         <span v-if="!pending">Запустить</span>
         <span v-else>Прервать</span>
