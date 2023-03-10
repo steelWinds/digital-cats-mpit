@@ -6,7 +6,7 @@ interface ScanParams {
 export const useNDEF = () => {
   const isSupported = useSupported(() => globalThis && 'NDEFReader' in globalThis)
   const [pending, togglePending] = useToggle(false)
-  const { abort, signal } = new AbortController()
+  const controller = new AbortController()
 
   const scan = async () => {
     return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ export const useNDEF = () => {
 
         const ndefReader = new window.NDEFReader()
 
-        ndefReader.scan({ signal })
+        ndefReader.scan({ signal: controller.signal })
 
         ndefReader.onreading = (event) => {
           togglePending(false)
@@ -42,6 +42,6 @@ export const useNDEF = () => {
     isSupported,
     scan,
     pending,
-    abort
+    abort: controller.abort
   }
 }
