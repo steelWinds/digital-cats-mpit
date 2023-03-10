@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { scan, pending, controller } = useNDEF()
+const { scan, pending } = useNDEF()
 
 definePageMeta({
   layout: false
@@ -8,8 +8,12 @@ definePageMeta({
 const scanNDEF = async () => {
   try {
     const readerEvent = await scan()
+
+    if (readerEvent.type === 'url') {
+      readerEvent.type
+    }
   } catch (error: any) {
-    ElMessage({ message: error.message || 'Возникла неизвестная ошибка, попробуйте другой чип', type: 'error' })
+    ElMessage({ message: error.message || 'Unhandled error, try different NFC module', type: 'error' })
   }
 }
 
@@ -50,6 +54,7 @@ watch(pending, (val) => {
       />
 
       <el-button
+        :loading="pending"
         class="
           !px-8
           !py-3
@@ -59,10 +64,11 @@ watch(pending, (val) => {
           !text-lg
           !h-auto
         "
-        @click="() => { !pending ? scanNDEF() : controller.abort() }"
+        @click="scanNDEF()"
       >
-        <span v-if="!pending">Запустить</span>
-        <span v-else>Прервать</span>
+        <template v-if="!pending">
+          Запустить
+        </template>
       </el-button>
     </article>
   </NuxtLayout>

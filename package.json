@@ -2,17 +2,14 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --https --ssl-cert localhost.pem --ssl-key localhost-key.pem",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@css-render/vue3-ssr": "^0.15.12",
     "@element-plus/nuxt": "^1.0.3",
     "@nuxt/eslint-config": "^0.1.1",
-    "@types/animejs": "^3.1.7",
-    "@types/vivus": "^0.4.4",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@vicons/carbon": "^0.12.0",
     "@vueuse/nuxt": "^9.13.0",
@@ -22,29 +19,23 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.9.0",
-    "naive-ui": "^2.34.3",
     "nuxt": "^3.2.3",
     "postcss": "^8.4.21",
     "postcss-nesting": "^11.2.1",
     "tailwindcss": "^3.2.7",
     "typescript": "*",
     "unplugin-auto-import": "^0.15.1",
-    "unplugin-vue-components": "^0.24.1",
-    "vfonts": "^0.0.3"
+    "unplugin-vue-components": "^0.24.1"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
-    "@lottiefiles/lottie-player": "^1.7.1",
     "@nuxt/image": "^0.7.1",
     "@pinia/nuxt": "^0.4.7",
     "@vueuse/core": "^9.13.0",
-    "animejs": "^3.2.1",
     "element-plus": "^2.2.36",
     "nuxt-icon": "^0.3.2",
-    "nuxt-icons": "^3.1.0",
     "pinia": "^2.0.33",
     "postcss-import": "^15.1.0",
-    "postcss-preset-env": "^8.0.1",
-    "vivus": "^0.4.6"
+    "postcss-preset-env": "^8.0.1"
   }
 }

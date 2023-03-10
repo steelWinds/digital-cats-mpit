@@ -1,45 +1,37 @@
-interface ScanParams {
-  readingError: (error: any) => void
-  signalError: (error: any) => void
-}
-
 export const useNDEF = () => {
   const isSupported = useSupported(() => globalThis && 'NDEFReader' in globalThis)
   const [pending, togglePending] = useToggle(false)
   const controller = new AbortController()
+  const signal = controller.signal
 
-  const scan = async () => {
+  const scan = async (): Promise<NDEFReadingEvent> => {
+    if (!isSupported.value) throw (new Error('NDEF not available'))
+
     return new Promise((resolve, reject) => {
-      try {
-        if (!isSupported.value) return reject(new Error('NDEF чтение недоступно, или вы отказали в доступе'))
+      const nfcReader = new window.NDEFReader()
 
-        const nfcReader = new window.NDEFReader()
+      nfcReader
+        .scan({ signal })
+        .then(() => {
+          togglePending(true)
 
-        nfcReader
-          .scan({ signal: controller.signal })
-          .then(() => {
-            togglePending(true)
-
-            nfcReader.onreading = (event) => {
-              togglePending(false)
-
-              resolve(event)
-            }
-
-            nfcReader.onreadingerror = (error) => {
-              togglePending(false)
-
-              reject(error)
-            }
-          })
-          .catch(() => {
+          nfcReader.onreading = (event) => {
             togglePending(false)
-          })
-      } catch (error: any) {
-        togglePending(false)
 
-        reject(error)
-      }
+            resolve(event)
+          }
+
+          nfcReader.onreadingerror = (error) => {
+            togglePending(false)
+
+            reject(error)
+          }
+        })
+        .catch((error) => {
+          togglePending(false)
+
+          reject(error)
+        })
     })
   }
 
