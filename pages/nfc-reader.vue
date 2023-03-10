@@ -7,15 +7,17 @@ definePageMeta({
 
 const scanNDEF = async () => {
   try {
-    ElMessage({ message: 'Идет чтение NFC чипа, приложите к нему телефон', type: 'error' })
-
     const readerEvent = await scan()
-
-    console.log(readerEvent)
   } catch (error: any) {
     ElMessage({ message: error.message || 'Возникла неизвестная ошибка, попробуйте другой чип', type: 'error' })
   }
 }
+
+watch(pending, (val) => {
+  if (!val) return
+
+  ElMessage({ message: 'Идет чтение NFC чипа, приложите к нему телефон', type: 'success' })
+})
 </script>
 
 <template>
@@ -57,7 +59,7 @@ const scanNDEF = async () => {
           !text-lg
           !h-auto
         "
-        @click="() => !pending ? scanNDEF() : abort()"
+        @click="() => { !pending ? scanNDEF() : abort() }"
       >
         <span v-if="!pending">Запустить</span>
         <span v-else>Прервать</span>
