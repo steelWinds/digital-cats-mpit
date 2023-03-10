@@ -32,7 +32,7 @@ export const useNDEF = () => {
               reject(error)
             }
           })
-          .catch(reject)
+          .catch((e) => console.log(e))
       } catch (error: any) {
         togglePending(false)
 
