@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { scan, pending, abort } = useNDEF()
+const { scan, pending, controller } = useNDEF()
 
 definePageMeta({
   layout: false
@@ -59,7 +59,7 @@ watch(pending, (val) => {
           !text-lg
           !h-auto
         "
-        @click="() => { !pending ? scanNDEF() : abort() }"
+        @click="() => { !pending ? scanNDEF() : controller.abort() }"
       >
         <span v-if="!pending">Запустить</span>
         <span v-else>Прервать</span>

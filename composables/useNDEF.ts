@@ -45,6 +45,6 @@ export const useNDEF = () => {
     isSupported,
     scan,
     pending,
-    abort: controller.abort
+    controller
   }
 }
