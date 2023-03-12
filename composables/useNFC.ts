@@ -3,15 +3,15 @@ export const useNFC = () => {
   const [pending, togglePending] = useToggle(false)
   const scanController = new AbortController()
   const scanSignal = scanController.signal
-  const nfcReader = ref<NDEFReader | null>(null)
+  const nfcReader = ref<NDEFReader>()
 
   const setReader = (reader: NDEFReader) => {
     nfcReader.value = reader
   }
 
   const write = async (message: NDEFRecordDataSource, options?: NDEFWriteOptions): Promise<boolean> => {
-    if (!isSupported.value || pending.value || !nfcReader.value) {
-      throw (new Error('NFC reader not available or busy'))
+    if (!isSupported.value || !pending.value || !nfcReader.value) {
+      throw (new Error('NFC reader not scanning'))
     }
 
     return new Promise((resolve, reject) => {
@@ -25,8 +25,10 @@ export const useNFC = () => {
   }
 
   const scan = async (): Promise<NDEFReadingEvent> => {
-    if (!isSupported.value || pending.value) {
-      throw (new Error('NFC reader not available or busy'))
+    if (!isSupported.value) {
+      throw (new Error('NFC reader not available'))
+    } else if (pending.value) {
+      throw (new Error('NFC reader is busy'))
     }
 
     return new Promise((resolve, reject) => {
@@ -34,18 +36,20 @@ export const useNFC = () => {
 
       if (!nfcReader.value) reject(new Error('Unhadled error during set NDEF reader'))
 
-      nfcReader.value!
+      const reader = nfcReader.value!
+
+      reader
         .scan({ signal: scanSignal })
         .then(() => {
           togglePending(true)
 
-          nfcReader.value!.onreading = (event) => {
+          reader.onreading = (event) => {
             togglePending(false)
 
             resolve(event)
           }
 
-          nfcReader.value!.onreadingerror = (error) => {
+          reader.onreadingerror = (error) => {
             togglePending(false)
 
             reject(error)
