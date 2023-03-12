@@ -10,6 +10,7 @@
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.3",
     "@nuxt/eslint-config": "^0.1.1",
+    "@popperjs/core": "^2.11.6",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@vicons/carbon": "^0.12.0",
     "@vueuse/nuxt": "^9.13.0",
