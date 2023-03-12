@@ -9,12 +9,12 @@
     align="middle"
   >
     <el-row>
-      <VNuxtLink to="/">
+      <NuxtLink to="/">
         <img
           src="~/assets/images/logo.png"
           class="w-24 "
         >
-      </VNuxtLink>
+      </NuxtLink>
     </el-row>
   </el-row>
 </template>

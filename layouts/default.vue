@@ -22,7 +22,7 @@
   background-position: right 0px;
 
   @media (width < 1280px) {
-    background-size: 120%;
+    background-size: 100%;
     background-position: right 0px;
   }
 }

@@ -1,0 +1,23 @@
+<template>
+  <NuxtLink
+    class="
+      px-8
+      py-3
+      rounded-base
+      text-green
+      text-lg
+      h-auto
+      border-[1px]
+      border-solid
+      border-green
+      rounded-[10px]
+      hover:bg-green
+      hover:text-white
+      active:border-light-green
+      transition
+      duration-300
+    "
+  >
+    <slot />
+  </NuxtLink>
+</template>

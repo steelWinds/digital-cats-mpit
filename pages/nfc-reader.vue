@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const { scan, pending } = useNDEF()
+const { scan, pending } = useNFC()
 
 definePageMeta({
   layout: false
 })
 
-const scanNDEF = async () => {
+const scanNFC = async () => {
   try {
     const readerEvent = await scan()
 
@@ -30,6 +30,15 @@ watch(pending, (val) => {
 
 <template>
   <NuxtLayout name="app-page">
+    <template #header>
+      <NuxtLink
+        to="/"
+        class="block mt-[111px] ml-[35px]"
+      >
+        <ElIconArrowLeftBold class="fill-green w-8" />
+      </NuxtLink>
+    </template>
+
     <article class="h-full flex justify-center items-center flex-col">
       <Icon
         name="fa6-brands:nfc-directional"
@@ -38,48 +47,17 @@ watch(pending, (val) => {
         size="124"
       />
 
-      <el-button
+      <UIButton
         :loading="pending"
         class="
-          !px-8
-          !py-3
           mt-12
-          !rounded-base
-          text-green
-          !text-lg
-          !h-auto
         "
-        @click="scanNDEF()"
+        @click="scanNFC"
       >
         <template v-if="!pending">
-          Запустить
+          Чтение
         </template>
-      </el-button>
-
-      <NuxtLink
-        to="/"
-        class="
-          !px-8
-          !py-3
-          mt-12
-          !rounded-base
-          text-green
-          !text-lg
-          !h-auto
-          font-semibold
-          border-[1px]
-          border-solid
-          border-green
-          !rounded-[10px]
-          hover:bg-green
-          hover:text-white
-          active:border-light-green
-          transition
-          duration-300
-        "
-      >
-        Прервать и вернуться
-      </NuxtLink>
+      </UIButton>
     </article>
   </NuxtLayout>
 </template>
