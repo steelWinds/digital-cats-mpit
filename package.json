@@ -32,7 +32,7 @@
     "@nuxt/image": "^0.7.1",
     "@pinia/nuxt": "^0.4.7",
     "@vueuse/core": "^9.13.0",
-    "element-plus": "^2.2.36",
+    "element-plus": "^2.2.33",
     "nuxt-icon": "^0.3.2",
     "pinia": "^2.0.33",
     "postcss-import": "^15.1.0",
