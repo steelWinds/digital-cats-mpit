@@ -1,42 +1,8 @@
-# Nuxt 3 Minimal Starter
+# sakha-culture-tech
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Project for reading\writing NFC chips in Yakutsk museums. Made for MPIT-hackathon
 
-## Setup
+# Authors
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+[lina9-creator](https://github.com/lina9-creator)
+[steelWinds](https://github.com/steelWinds)
