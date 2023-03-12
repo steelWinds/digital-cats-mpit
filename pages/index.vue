@@ -41,13 +41,13 @@ const parallaxShadow = computed(() => ({
           :show-arrow="false"
         >
           <template #reference>
-            <UILink
+            <NuxtLink
               class="sm:text-2xl sm:px-10 sm:py-4 !mb-12"
               :to="!isSupportedNDEF ? '' : '/nfc-reader'"
               :class="{ 'disabled': !isSupportedNDEF }"
             >
               Попробовать
-            </UILink>
+            </NuxtLink>
           </template>
         </el-popover>
       </ClientOnly>
