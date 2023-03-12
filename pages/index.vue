@@ -32,24 +32,13 @@ const parallaxShadow = computed(() => ({
       </h3>
 
       <ClientOnly>
-        <el-popover
-          placement="top-start"
-          title="Ой!"
-          :width="210"
-          trigger="hover"
-          content="Your browser is not supported NFC reading"
-          :show-arrow="false"
+        <NuxtLink
+          class="sm:text-2xl sm:px-10 sm:py-4 !mb-12"
+          :to="!isSupportedNDEF ? '' : '/nfc-reader'"
+          :class="{ 'disabled': !isSupportedNDEF }"
         >
-          <template #reference>
-            <NuxtLink
-              class="sm:text-2xl sm:px-10 sm:py-4 !mb-12"
-              :to="!isSupportedNDEF ? '' : '/nfc-reader'"
-              :class="{ 'disabled': !isSupportedNDEF }"
-            >
-              Попробовать
-            </NuxtLink>
-          </template>
-        </el-popover>
+          Попробовать
+        </NuxtLink>
       </ClientOnly>
     </div>
 
