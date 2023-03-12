@@ -5,12 +5,12 @@ const { tilt, roll } = useParallax(parallaxContainer)
 const { isSupported: isSupportedNDEF } = useNFC()
 
 const parallaxStyle = computed(() => ({
-  transform: `rotateX(${roll.value * 15}deg) rotateY(${tilt.value * 15}deg)`,
+  transform: `rotateX(${roll.value * 20}deg) rotateY(${tilt.value * 15}deg)`,
   transition: 'all .3s ease-out'
 }))
 
 const parallaxShadow = computed(() => ({
-  filter: `drop-shadow(${roll.value * 10}px ${tilt.value * 10}px 3px rgb(108 146 143 / 0.4))`
+  filter: `drop-shadow(${Math.round(tilt.value * 10)}px ${Math.round(roll.value * 10)}px 3px rgb(108 146 143 / 0.4))`
 }))
 </script>
 
@@ -31,15 +31,21 @@ const parallaxShadow = computed(() => ({
         Вся культура в NFC
       </h3>
 
-      <ClientOnly>
-        <NuxtLink
+      <el-tooltip
+        content="Your browser is not supported reading NFC"
+        placement="top-start"
+        effect="light"
+        :disabled="isSupportedNDEF"
+        :show-arrow="false"
+      >
+        <UILink
           class="sm:text-2xl sm:px-10 sm:py-4 !mb-12"
           :to="!isSupportedNDEF ? '' : '/nfc-reader'"
           :class="{ 'disabled': !isSupportedNDEF }"
         >
           Попробовать
-        </NuxtLink>
-      </ClientOnly>
+        </UILink>
+      </el-tooltip>
     </div>
 
     <div
