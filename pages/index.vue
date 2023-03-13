@@ -32,7 +32,7 @@ const parallaxShadow = computed(() => ({
       </h3>
 
       <ClientOnly>
-        <el-tooltip
+        <lazy-el-tooltip
           content="Your browser is not supported reading NFC"
           placement="top-start"
           effect="light"
@@ -46,7 +46,7 @@ const parallaxShadow = computed(() => ({
           >
             Попробовать
           </UILink>
-        </el-tooltip>
+        </lazy-el-tooltip>
       </ClientOnly>
     </div>
 
