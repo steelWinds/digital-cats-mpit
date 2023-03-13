@@ -31,23 +31,21 @@ const parallaxShadow = computed(() => ({
         Вся культура в NFC
       </h3>
 
-      <ClientOnly>
-        <lazy-el-tooltip
-          content="Your browser is not supported reading NFC"
-          placement="top-start"
-          effect="light"
-          :disabled="isSupportedNDEF"
-          :show-arrow="false"
+      <el-tooltip
+        content="Your browser is not supported reading NFC"
+        placement="top-start"
+        effect="light"
+        :disabled="isSupportedNDEF"
+        :show-arrow="false"
+      >
+        <UILink
+          class="sm:text-2xl sm:px-10 sm:py-4 !mb-12"
+          :to="!isSupportedNDEF ? '' : '/nfc-reader'"
+          :class="{ 'disabled': !isSupportedNDEF }"
         >
-          <UILink
-            class="sm:text-2xl sm:px-10 sm:py-4 !mb-12"
-            :to="!isSupportedNDEF ? '' : '/nfc-reader'"
-            :class="{ 'disabled': !isSupportedNDEF }"
-          >
-            Попробовать
-          </UILink>
-        </lazy-el-tooltip>
-      </ClientOnly>
+          Попробовать
+        </UILink>
+      </el-tooltip>
     </div>
 
     <div

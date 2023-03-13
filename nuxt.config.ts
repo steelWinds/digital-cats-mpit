@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   routeRules: {
-    '/': { static: true }
+    '/': { static: true, ssr: false }
   },
   app: {
     head: {
