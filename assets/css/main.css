@@ -1,9 +1,12 @@
+@layers tailwind-base, custom-style;
+
+@layer tailwind-base {
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+}
 
 
-@layer base {
+@layer custom-style {
   :root {
     --c-green: #4C6F6C;
     --c-light-green: #6C928F;
@@ -21,18 +24,24 @@
     cursor: pointer;
   }
 
-  .disabled {
+  .disabled, *:disabled, a:is(:not([href]), [aria-disabled="true"]) {
     &, &:active, &:hover {
       color: var(--c-gray) !important;
       border-color: var(--c-gray) !important;
       background: unset !important;
-      cursor: default !important;
+      cursor: not-allowed !important;
       user-select: none !important;
+      display: inline-block !important;
+      text-decoration: none !important;
+
+      * > {
+        pointer-events: none !important;
+      }
     }
   }
 
   html {
-    font-family: 'Inter', system-ui, sans;
+    font-family: 'Inter';
 
     .el-button {
       --el-button-text-color: var(--c-green);
@@ -41,6 +50,10 @@
       --el-button-border-color: var(--c-green);
       --el-button-hover-border-color: var(--c-green);
       --el-button-active-border-color: var(--c-light-green);
+    }
+
+    .el-loading-spinner .path {
+      stroke: var(--c-green) !important;
     }
   }
 

@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   routeRules: {
-    '/': { static: true, ssr: false }
+    '/': { static: true }
   },
   app: {
     head: {
@@ -30,8 +30,7 @@ export default defineNuxtConfig({
   },
   css: [
     'element-plus/theme-chalk/dark/css-vars.css',
-    '~/assets/css/main.css',
-    '~/assets/css/fonts.css'
+    '~/assets/css/main.css'
   ],
   postcss: {
     plugins: {
@@ -47,8 +46,20 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
     '@element-plus/nuxt',
-    'nuxt-icon'
+    'nuxt-icon',
+    '@nuxtjs/google-fonts'
   ],
+  googleFonts: {
+    families: {
+      Inter: {
+        wght: [400, 500, 600]
+      }
+    },
+    display: 'swap',
+    preconnect: true,
+    download: true,
+
+  },
   pinia: {
     autoImports: [
       'defineStore',

@@ -3,7 +3,6 @@
     class="
       !bg-[url(~/assets/images/bg-main.png)]
       bg-no-repeat
-      bg-origin-border
       main-bg
     "
   >
@@ -19,11 +18,10 @@
 
 <style scoped>
 .main-bg {
-  background-position: right 0px;
+  background-position: right 0;
 
   @media (width < 1280px) {
     background-size: 100%;
-    background-position: right 0px;
   }
 }
 </style>

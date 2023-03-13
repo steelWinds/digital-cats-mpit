@@ -5,6 +5,7 @@ specifiers:
   '@element-plus/nuxt': ^1.0.4
   '@nuxt/eslint-config': ^0.1.1
   '@nuxt/image': ^0.7.1
+  '@nuxtjs/google-fonts': ^3.0.0
   '@pinia/nuxt': ^0.4.7
   '@typescript-eslint/eslint-plugin': ^5.54.1
   '@vicons/carbon': ^0.12.0
@@ -43,6 +44,7 @@ dependencies:
 devDependencies:
   '@element-plus/nuxt': 1.0.4_ojxhhe6hwsrvru2w26z5igq6hq
   '@nuxt/eslint-config': 0.1.1_eslint@8.36.0
+  '@nuxtjs/google-fonts': 3.0.0
   '@typescript-eslint/eslint-plugin': 5.54.1_vgl77cfdswitgr47lm5swmv43m
   '@vicons/carbon': 0.12.0
   '@vueuse/nuxt': 9.13.0_nuxt@3.2.3
@@ -1762,6 +1764,17 @@ packages:
       - vue-tsc
     dev: true
 
+  /@nuxtjs/google-fonts/3.0.0:
+    resolution: {integrity: sha512-knP2CJFkMHGQ9pepVNwquXvqiIHDma/6yZNXiYk7WWatRbbQUPf2423vXiBYu267Mff2KMuDLoAJ1Dsv2ymhdQ==}
+    dependencies:
+      '@nuxt/kit': 3.2.3
+      google-fonts-helper: 3.2.4
+      pathe: 1.1.0
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
   /@opentelemetry/api/1.4.0:
     resolution: {integrity: sha512-IgMK9i3sFGNUqPMbjABm0G26g0QCKCUBfglhQ7rQq6WcxbKfEHRcmwsoER4hZcuYqJgkYn2OeuoJIv7Jsftp7g==}
     engines: {node: '>=8.0.0'}
@@ -2630,6 +2643,7 @@ packages:
   /autoprefixer/10.4.14_postcss@8.4.21:
     resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
     engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
@@ -4362,6 +4376,15 @@ packages:
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
+
+  /google-fonts-helper/3.2.4:
+    resolution: {integrity: sha512-M740UjqBOxmG2qFUW7Lhgak9WDpsT18zxLJuG+MP4r+G1vhqbWm3x3D40xFEzhveQAneaEr8WjPxf+vcx9Xohg==}
+    dependencies:
+      deepmerge: 4.3.0
+      hookable: 5.5.1
+      ofetch: 1.0.1
+      ufo: 1.1.1
+    dev: true
 
   /gopd/1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -6777,6 +6800,7 @@ packages:
   /rollup-plugin-visualizer/5.9.0_rollup@3.19.1:
     resolution: {integrity: sha512-bbDOv47+Bw4C/cgs0czZqfm8L82xOZssk4ayZjG40y9zbXclNk7YikrZTDao6p7+HDiGxrN0b65SgZiVm9k1Cg==}
     engines: {node: '>=14'}
+    hasBin: true
     peerDependencies:
       rollup: 2.x || 3.x
     peerDependenciesMeta:
@@ -7189,6 +7213,7 @@ packages:
   /tailwindcss/3.2.7_postcss@8.4.21:
     resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}
     engines: {node: '>=12.13.0'}
+    hasBin: true
     peerDependencies:
       postcss: ^8.0.9
     dependencies:
@@ -7628,6 +7653,7 @@ packages:
 
   /update-browserslist-db/1.0.10_browserslist@4.21.5:
     resolution: {integrity: sha512-OztqDenkfFkbSG+tRxBeAnCVPckDBcvibKd35yDONx6OU8N7sqgwc7rCbkJ/WcYtVRZ4ba68d6byhC21GFh7sQ==}
+    hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
@@ -7732,6 +7758,7 @@ packages:
   /vite/4.1.4:
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}
     engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
     peerDependencies:
       '@types/node': '>= 14'
       less: '*'
@@ -7809,6 +7836,7 @@ packages:
   /vue-demi/0.13.11:
     resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
     engines: {node: '>=12'}
+    hasBin: true
     requiresBuild: true
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1

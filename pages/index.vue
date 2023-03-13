@@ -4,6 +4,8 @@ const parallaxContainer = ref(null)
 const { tilt, roll } = useParallax(parallaxContainer)
 const { isSupported: isSupportedNDEF } = useNFC()
 
+const noSupportDialog = ref(!isSupportedNDEF.value)
+
 const parallaxStyle = computed(() => ({
   transform: `rotateX(${roll.value * 20}deg) rotateY(${tilt.value * 15}deg)`,
   transition: 'all .3s ease-out'
@@ -15,7 +17,8 @@ const parallaxShadow = computed(() => ({
 </script>
 
 <template>
-  <LayoutArticle
+  <div>
+    <LayoutArticle
     ref="parallaxContainer"
     class="max-w-base mx-auto pt-48 flex-col"
   >
@@ -31,21 +34,29 @@ const parallaxShadow = computed(() => ({
         Вся культура в NFC
       </h3>
 
-      <el-tooltip
-        content="Your browser is not supported reading NFC"
-        placement="top-start"
-        effect="light"
-        :disabled="isSupportedNDEF"
-        :show-arrow="false"
+      <UILink
+        external-class="mb-12"
+        class="sm:text-2xl sm:px-10 sm:py-4 font-medium"
+        to=""
+        disabled
       >
-        <UILink
-          class="sm:text-2xl sm:px-10 sm:py-4 !mb-12"
-          :to="!isSupportedNDEF ? '' : '/nfc-reader'"
-          :class="{ 'disabled': !isSupportedNDEF }"
+        Попробовать
+      </UILink>
+
+      <ClientOnly>
+        <el-dialog
+          v-model="noSupportDialog"
+          title="Warning!"
+          width="70%"
+          class="max-w-lg"
+          destroy-on-close
+          center
         >
-          Попробовать
-        </UILink>
-      </el-tooltip>
+          <h3 class="text-center">
+            Your broser doesn't supporting NFC reading, please, change it.
+          </h3>
+        </el-dialog>
+      </ClientOnly>
     </div>
 
     <div
@@ -85,4 +96,5 @@ const parallaxShadow = computed(() => ({
       Это веб приложение создано специально для считывания NFC чипов, чтобы вам было проще получать информацию о культуре Якутии
     </article>
   </LayoutArticle>
+  </div>
 </template>
